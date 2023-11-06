@@ -21,7 +21,7 @@ INCLUDES := -I$(OUTPUT) -I../../third_party/libbpf/include/uapi -I$(dir $(VMLINU
 CFLAGS := -g -Wall
 ALL_LDFLAGS := $(LDFLAGS) $(EXTRA_LDFLAGS)
 
-APPS = opensnoop # minimal minimal_legacy uprobe kprobe fentry usdt sockfilter tc ksyscall
+APPS = uprobe # minimal minimal_legacy  kprobe fentry usdt sockfilter tc ksyscall
 
 CARGO ?= $(shell which cargo)
 ifeq ($(strip $(CARGO)),)
@@ -66,7 +66,7 @@ $(call allow-override,CC,$(CROSS_COMPILE)cc)
 $(call allow-override,LD,$(CROSS_COMPILE)ld)
 
 .PHONY: all
-all: $(APPS) victim
+all: $(APPS)
 
 .PHONY: clean
 clean:
@@ -136,6 +136,3 @@ $(APPS): %: $(OUTPUT)/%.o $(LIBBPF_OBJ) | $(OUTPUT)
 
 # keep intermediate (.skel.h, .bpf.o, etc) targets
 .SECONDARY:
-
-victim: victim.cpp
-	$(CXX) -Wall -g victim.cpp -o victim
