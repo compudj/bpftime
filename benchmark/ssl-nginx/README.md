@@ -78,7 +78,7 @@ Transfer/sec:      2.08MB
 
 Note: you need to config bpftime to:
 
-1. No locks in hash maps
+1. No locks in hash maps and array maps
 2. Using ubpf JIT
 3. Using LTO
 

@@ -63,6 +63,8 @@ const bpftime::agent_config& set_agent_config_from_env()
 			agent_config.enable_shm_maps_helper_group =
 				agent_config.enable_ffi_helper_group = true;
 	}
+	const char *use_jit = getenv("BPFTIME_USE_JIT");
+	agent_config.jit_enabled = use_jit != nullptr;
 	bpftime_set_agent_config(agent_config);
 	return bpftime_get_agent_config();
 }
