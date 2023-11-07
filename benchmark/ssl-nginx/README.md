@@ -76,16 +76,23 @@ Transfer/sec:      2.08MB
 
 ## test for userspace sslsniff
 
+Note: you need to config bpftime to:
+
+1. No locks in hash maps
+2. Using ubpf JIT
+3. Using LTO
+
 in one console, start userspace sslsniff
 
-```console
-sudo ~/.bpftime/bpftime load ./sslsniff
+```sh
+sudo ~/.bpftime/bpftime load example/sslsniff/sslsniff
 ```
 
 in another console, restart nginx
 
-```console
-sudo ~/.bpftime/bpftime start nginx -- -c $(pwd)/nginx.conf -p $(pwd)
+```sh
+sudo ~/.bpftime/bpftime start nginx -- -c nginx.conf -p benchmark/ssl-nginx
+# or sudo LD_PRELOAD=build/runtime/agent/libbpftime-agent.so nginx -c nginx.conf -p benchmark/ssl-nginx
 ```
 
 in another console, run wrk
@@ -101,9 +108,3 @@ Running 10s test @ https://127.0.0.1:4043/index.html
 Requests/sec:  16580.88
 Transfer/sec:      4.35MB
 ```
-
-Note:
-
-1. No locks in hash maps
-2. Using ubpf JIT
-3. Using LTO
