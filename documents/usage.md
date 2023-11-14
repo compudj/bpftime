@@ -1,4 +1,4 @@
-# Usgae
+# Usage
 
 It's at a very early stage and may contain bugs on more platforms and eBPF programs.
 
