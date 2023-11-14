@@ -124,12 +124,12 @@ see [documents/how-it-works.md](https://github.com/eunomia-bpf/bpftime/tree/mast
 
 How is the performance of `userspace uprobe` compared to `kernel uprobes`?
 
-| Probe/Tracepoint Types | Kernel (ns)  | Userspace (ns) | Insn Count |
-|------------------------|-------------:|---------------:|---------------:|
-| Uprobe                 | 3224.172760  | 314.569110     | 4    |
-| Uretprobe              | 3996.799580  | 381.270270     | 2    |
-| Syscall Tracepoint     | 151.82801    | 232.57691      | 4    |
-| Embedding runtime      | Not avaliable |  110.008430   | 4    |
+| Probe/Tracepoint Types | Kernel (ns)  | Userspace (ns) |
+|------------------------|-------------:|---------------:|
+| Uprobe                 | 3224.172760  | 314.569110     |
+| Uretprobe              | 3996.799580  | 381.270270     |
+| Syscall Tracepoint     | 151.82801    | 232.57691      |
+| Embedding runtime      | Not avaliable |  110.008430   |
 
 It can be attached to functions in running process just like the kernel uprobe does.
 
